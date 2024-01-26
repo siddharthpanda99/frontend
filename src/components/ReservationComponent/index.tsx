@@ -58,7 +58,8 @@ const HotelReservation = () => {
   //   },
   // });
   // Fetcher function
-  const handleBooking = () => {
+  const handleBooking = (e) => {
+    e.preventDefault();
     postData(bookingInfo);
            
   }
