@@ -1,10 +1,17 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const HotelCard = ({info}) => {
   const { id, rating, name, location, price } = info;
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    console.log(id);
+    navigate(`/hotel/${id}`)
+  }
   
     return (
-        <div className="cursor-pointer rounded-xl bg-white p-3 shadow-lg hover:shadow-xl" onClick={() => console.log(id)}>
+        <div className="cursor-pointer rounded-xl bg-white p-3 shadow-lg hover:shadow-xl" onClick={handleClick}>
           <div className="relative flex items-end overflow-hidden rounded-xl">
             <img
               src="https://thumbnails.production.thenounproject.com/gA9eZOvsBYSHrMumgrslmRGoBto=/fit-in/1000x1000/photos.production.thenounproject.com/photos/BCBA88B6-5B41-4B50-A786-E60CAA0ECDA3.jpg"

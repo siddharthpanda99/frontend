@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import useGet from "app/hooks/services/useGet";
 import HotelCard from "./CardComponent";
+import { Hotel } from "app/types/Hotel";
 
 const Home = () => {
   const { getData, data, error, loading } = useGet("/hotels");
   // console.log("🚀 ~ Home ~ data, error, loading:", data, error, loading)
-  const [hotels, setHotels] = useState([]);
+  const [hotels, setHotels] = useState<Hotel[] | undefined>([]);
 
   useEffect(() => {
     setHotels(data?.data);
@@ -14,6 +15,7 @@ const Home = () => {
   useEffect(() => {
     console.log("Getting user data");
     getData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
