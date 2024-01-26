@@ -1,5 +1,5 @@
 // Navbar.js
-import React, { forwardRef, useRef } from "react";
+import React, { forwardRef } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
