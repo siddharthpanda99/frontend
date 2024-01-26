@@ -2,7 +2,12 @@ import React, {useState, useEffect} from "react";
 import { useHotelContext } from "app/hooks/useHotelContext";import { DateRangePicker } from "@mui/x-date-pickers-pro/DateRangePicker";
 import { Box } from "@mui/material";
 import dayjs, { Dayjs } from "dayjs";
+import { useMutation } from "react-query";
+import { useParams } from "react-router-dom";
+
 import { useUserContext } from "app/hooks/useUserContext";
+import { baseUrl } from "app/constants";
+import usePost from "app/hooks/services/usePost";
 
 const styles = {
   container: {
@@ -43,10 +48,30 @@ const styles = {
 const HotelReservation = () => {
   const { hotel } = useHotelContext();
   const { user } = useUserContext();
+  const param = useParams();
+  console.log(`${baseUrl}/book${param.id}`);
+  const { postData, data, error, loading } = usePost(`/book/${param.id}`);
+
+  // const mutation = useMutation({
+  //   mutationFn: (payload) => {
+  //     return fetch(`${baseUrl}/book/${param.id}`, payload);
+  //   },
+  // });
+  // Fetcher function
+  const handleBooking = () => {
+    postData(bookingInfo);
+           
+  }
+
+  useEffect(() => {
+    console.log("🚀 ~ HotelReservation ~ data:", data)
+    alert('Posted ', data)
+  }, [data]);
+  
 
   const { id, name, location, selectedRoom, price } = hotel;
-  console.log("🚀 ~ HotelReservation ~ hotel:", hotel)
-  const {email} = user;
+  console.log("🚀 ~ HotelReservation ~ hotel:", hotel);
+  const { email } = user;
   const [dateRange, setDateRange] = React.useState<DateRange<Dayjs>>([
     dayjs(Date.now()),
     dayjs(Date.now()),
@@ -58,13 +83,12 @@ const HotelReservation = () => {
     check_out_date: dateRange[1].toString(),
     room_id: selectedRoom,
     total_amount: price,
-    user_email: email
+    user_email: email,
   });
 
   useEffect(() => {
-    console.log("🚀 ~ HotelReservation ~ bookingInfo:", bookingInfo)
+    console.log("🚀 ~ HotelReservation ~ bookingInfo:", bookingInfo);
   }, [bookingInfo]);
-  
 
   return (
     <div style={styles.container}>
@@ -99,7 +123,7 @@ const HotelReservation = () => {
             <h3 style={styles.h3}>Breakfast, Spa</h3>
           </li>
         </ul>
-        <button className="btn">Confirm Reservation</button>
+        <button className="btn" onClick={handleBooking}>Confirm Reservation</button>
       </div>
     </div>
   );
