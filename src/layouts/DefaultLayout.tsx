@@ -10,7 +10,6 @@ const DefaultLayout = () => {
   const [elementHeight, setElementHeight] = useState(0);
 
   useEffect(() => {
-    console.log("🚀 ~ App ~ myElementRef:", myElementRef);
     if (myElementRef.current) {
       // Get the height of the element
       const height = myElementRef.current.clientHeight;

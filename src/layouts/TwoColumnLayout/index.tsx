@@ -2,7 +2,6 @@ import React from "react";
 import RouterComponent from "../../routes";
 
 const TwoColLayout = ({ siblingHeight }) => {
-  console.log("🚀 ~ TwoColLayout ~ siblingHeight:", siblingHeight);
   const styles = {
     flexContainer: {
       display: "flex",
