@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useUserContext } from 'contexts/useUserContext';
+import { useUserContext } from 'hooks/useUserContext';
 import { baseUrl } from '../../constants';
 const useGet = (url) => {
     const {user} = useUserContext();
