@@ -1,9 +1,10 @@
 // Navbar.js
-import React, { forwardRef } from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import React, { forwardRef, useRef } from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 import Button from "@mui/material/Button";
+import { useUserContext } from "../hooks/useUserContext";
 
 const NavbarContainer = styled.nav`
   background-color: #333;
@@ -24,17 +25,36 @@ const NavbarLink = styled(Link)`
 `;
 
 const TopBar = forwardRef((props, ref) => {
-  const user = {loggedIn: false}
+  const { user, setUser } = useUserContext();
 
   const handleLogout = () => {
-    console.log('Logged out')
-  }
+    console.log("Logged out");
+    setUser({
+      ...user, // Copy the old fields
+      token: "", // But override this one
+      loggedIn: false,
+      acceptedPolicy: false,
+    });
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        ...user,
+        token: "",
+        loggedIn: false,
+        acceptedPolicy: false,
+      })
+    );
+  };
 
   return (
     <NavbarContainer ref={ref}>
       <NavbarLink to="/home">Home</NavbarLink>
       <NavbarLink to="/test">Test</NavbarLink>
-      {user?.loggedIn && (<Button variant="outlined" onClick={handleLogout}>Logout</Button>)}
+      {user?.loggedIn && (
+        <Button variant="outlined" onClick={handleLogout}>
+          Logout
+        </Button>
+      )}
     </NavbarContainer>
   );
 });

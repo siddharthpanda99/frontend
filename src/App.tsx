@@ -1,16 +1,16 @@
-import { useState } from 'react'
-import './App.css'
-import DefaultLayout from './layouts/DefaultLayout'
+import UserProvider from "./providers/UserProvider";
 import { BrowserRouter } from "react-router-dom";
+import DefaultLayout from "./layouts/DefaultLayout";
+import "./App.css";
 
 function App() {
-  // const [count, setCount] = useState(0)
-
   return (
-    <BrowserRouter>
-      <DefaultLayout />
-    </BrowserRouter>
+    <UserProvider>
+      <BrowserRouter>
+        <DefaultLayout />
+      </BrowserRouter>
+    </UserProvider>
   );
 }
 
-export default App
+export default App;
