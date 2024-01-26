@@ -2,6 +2,7 @@
 import React, { forwardRef, useRef } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 import Button from "@mui/material/Button";
 import { useUserContext } from "../hooks/useUserContext";
@@ -26,6 +27,7 @@ const NavbarLink = styled(Link)`
 
 const TopBar = forwardRef((props, ref) => {
   const { user, setUser } = useUserContext();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     console.log("Logged out");
@@ -43,7 +45,8 @@ const TopBar = forwardRef((props, ref) => {
         loggedIn: false,
         acceptedPolicy: false,
       })
-    );
+      );
+      navigate("/login");
   };
 
   return (

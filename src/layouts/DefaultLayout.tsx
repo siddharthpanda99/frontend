@@ -19,11 +19,11 @@ const DefaultLayout = () => {
   }, [myElementRef]);
   return (
     <div>
+      <TopBar ref={myElementRef} />
       {!user.loggedIn ? (
         <Login />
       ) : (
         <>
-          <TopBar ref={myElementRef} />
           <TwoColLayout siblingHeight={elementHeight} />
         </>
       )}

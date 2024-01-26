@@ -25,17 +25,19 @@ const Login = () => {
         loggedIn: true,
         acceptedPolicy: true,
       });
-    }
-  }, [data]);
-
-  // Check if user loggedIn inside context, if yes, store it to localstorage for future logins
-  useEffect(() => {
-    if (user?.loggedIn) {
-      // localStorage.setItem("user", JSON.stringify(user));
-      // console.log("🚀 ~ useEffect ~ userSSSSS:", user);
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          ...user, // Copy the old fields
+          token: data?.data?.token, // But override this one
+          loggedIn: true,
+          acceptedPolicy: true,
+        })
+      );
+      console.log("🚀 ~ useEffect ~ userSSSSS:", user);
       navigate("/home");
     }
-  }, [user?.loggedIn]);
+  }, [data]);
 
   const handleAcceptPolicy = () => {
     updateUser("acceptedPolicy", !user?.acceptedPolicy);
@@ -43,6 +45,9 @@ const Login = () => {
 
   const handleLogin = (e) => {
     // Check if data exists in localstorage
+    const stateFrmLocal = JSON.parse(localStorage.getItem("user")) || user;
+    console.log("🚀 ~ handleLogin ~ stateFrmLocal:", stateFrmLocal);
+    setUser(stateFrmLocal);
     if (!user?.email) {
       alert("Please enter email");
     } else if (!user?.password) {
@@ -50,7 +55,8 @@ const Login = () => {
     }
     if (!user.loggedIn) {
       postData({ email: user?.email, password: user?.password });
-    } else navigate("/home");
+    } 
+    // else navigate("/home");
   };
 
   return (
