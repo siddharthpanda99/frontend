@@ -8,12 +8,12 @@ type UserProviderProps = {
 
 const UserProvider = ({ children }: UserProviderProps) => {
     const [user, setUser] = useState<User>({
-      username: "eve.holt@reqres.in",
-      password: "cityslicka",
+      email: "john@example.com",
+      password: "password123",
       loggedIn: false,
       acceptedPolicy: false,
       userData: [],
-      token: ''
+      token: "",
     });
 
     const updateUser = (key: string, value: any) => {

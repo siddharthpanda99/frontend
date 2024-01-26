@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, createContext } from "react";
 
 export type User = {
-    username: string,
+    email: string,
     password: string,
     acceptedPolicy: boolean,
     token: string,
@@ -20,7 +20,7 @@ export interface UserContextInterface {
 // export const UserContext = createContext<Partial<UserContextInterface>>({});
 const initialState = {
     user: {
-        username: '',
+        email: '',
         password: '',
         acceptedPolicy: false,
         token: '',

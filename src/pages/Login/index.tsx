@@ -16,12 +16,12 @@ const Login = () => {
 
   // Check once the data comes from login api
   useEffect(() => {
-    // console.log("🚀 ~ useEffect ~ data:", data)
-    if (data && data?.token) {
-      // console.log("🚀 ~ useEffect ~ token:", data.token)
+    console.log("🚀 ~ useEffect ~ data:", data)
+    if (data && data?.data?.token) {
+      console.log("🚀 ~ useEffect ~ token:", data.token)
       setUser({
         ...user, // Copy the old fields
-        token: data?.token, // But override this one
+        token: data?.data?.token, // But override this one
         loggedIn: true,
         acceptedPolicy: true,
       });
@@ -43,13 +43,13 @@ const Login = () => {
 
   const handleLogin = (e) => {
     // Check if data exists in localstorage
-    if (!user?.username) {
-      alert("Please enter username");
+    if (!user?.email) {
+      alert("Please enter email");
     } else if (!user?.password) {
       alert("Please enter password");
     }
     if (!user.loggedIn) {
-      postData({ username: user?.username, password: user?.password });
+      postData({ email: user?.email, password: user?.password });
     } else navigate("/home");
   };
 
@@ -71,18 +71,18 @@ const Login = () => {
         <div>
           <Input
             type="text"
-            label="Username"
-            value={user?.username}
+            label="Email"
+            value={user?.email}
             onChange={(e) => {
-              console.log("Cghanginh", e.target.value);
-              updateUser("username", e.target.value);
+              // console.log("Cghanginh", e?.target?.value);
+              updateUser("email", e?.target?.value);
             }}
           />
           <Input
             label="Password"
             type="password"
             value={user?.password}
-            onChange={(e) => updateUser("password", e.target?.value)}
+            onChange={(e) => updateUser("password", e?.target?.value)}
           />
           <div style={{ display: "flex", width: "100%" }}>
             <Checkbox
