@@ -21,13 +21,13 @@ const TwoColLayout = ({ siblingHeight }) => {
       <div
         style={{
           ...styles.flexContainer,
-          maxWidth: "20%",
+          maxWidth: "10%",
           borderRight: "1px solid red",
         }}
       >
         Hi
       </div>
-      <div style={{ ...styles.flexContainer, maxWidth: "80%" }}>
+      <div style={{ ...styles.flexContainer, maxWidth: "90%" }}>
         <RouterComponent />
       </div>
     </div>
