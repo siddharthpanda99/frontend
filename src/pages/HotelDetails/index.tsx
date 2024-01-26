@@ -12,13 +12,17 @@ import { Room } from "app/types/Room";
 
 export default function HotelDetails() {
   const [open, setOpen] = useState(false);
-  const {setHotel, updateHotel} = useHotelContext();
+  const {setHotel} = useHotelContext();
 
   const { id } = useParams();
   // console.log("🚀 ~ HotelDetails ~ queryParameters:", id);
 
   const handleClickOpen = (room: Room) => {
-    updateHotel('selectedRoom', room?.id);
+    setHotel((prevHotel) => ({
+      ...prevHotel,
+      selectedRoom: room.id,
+      price: room.price, // set new values for other properties
+    }));
     setOpen(true);
   };
 

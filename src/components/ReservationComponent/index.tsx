@@ -44,7 +44,7 @@ const HotelReservation = () => {
   const { hotel } = useHotelContext();
   const { user } = useUserContext();
 
-  const { id, name, location } = hotel;
+  const { id, name, location, selectedRoom, price } = hotel;
   console.log("🚀 ~ HotelReservation ~ hotel:", hotel)
   const {email} = user;
   const [dateRange, setDateRange] = React.useState<DateRange<Dayjs>>([
@@ -56,8 +56,8 @@ const HotelReservation = () => {
     hotel_id: id,
     check_in_date: dateRange[0].toString(),
     check_out_date: dateRange[1].toString(),
-    room_id: 0,
-    total_amount: 0,
+    room_id: selectedRoom,
+    total_amount: price,
     user_email: email
   });
 
