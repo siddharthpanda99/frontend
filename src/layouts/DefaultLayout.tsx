@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import Login from "../pages/Login";
-import TopBar from "../components/TopBar";
-import TwoColLayout from "./TwoColumnLayout";
+import Login from "pages/Login";
+import TopBar from "components/TopBar";
+import TwoColLayout from "layouts/TwoColumnLayout";
 
 const DefaultLayout = () => {
   const user = { loggedIn: false };

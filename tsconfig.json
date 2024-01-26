@@ -17,9 +17,12 @@
     /* Paths */
     "baseUrl": ".",
     "paths": {
+        "app/*": ["src/*"],
         "components/*": ["src/components/*"],
         "pages/*": ["src/pages/*"],
         "layouts/*": ["src/layouts/*"],
+        "routes/*": ["src/routes/*"],
+        "assets/*": ["src/assets/*"],
     }, 
 
     /* Linting */

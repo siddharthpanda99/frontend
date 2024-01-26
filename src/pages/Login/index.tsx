@@ -1,6 +1,6 @@
 
-import Logo from '../../assets/react.svg'
-import Input from '../../components/Input'
+import Logo from 'assets/react.svg'
+import Input from 'components/Input'
 
 const Login = () => {
 

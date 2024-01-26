@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { Routes, Route } from "react-router-dom";
-import Home from "../components/Home";
-import Login from '../pages/Login';
-import PrivateRoutes from "../routes/PrivateRoutes";
+import Home from "components/Home";
+import Login from 'pages/Login';
+import PrivateRoutes from "routes/PrivateRoutes";
 
 const RouterComponent = () => {
   return (
