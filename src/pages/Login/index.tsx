@@ -48,11 +48,6 @@ const Login = () => {
     const stateFrmLocal = JSON.parse(localStorage.getItem("user")) || user;
     console.log("🚀 ~ handleLogin ~ stateFrmLocal:", stateFrmLocal);
     setUser(stateFrmLocal);
-    if (!user?.email) {
-      alert("Please enter email");
-    } else if (!user?.password) {
-      alert("Please enter password");
-    }
     if (!user.loggedIn) {
       postData({ email: user?.email, password: user?.password });
     } 

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import { useHotelContext } from "app/hooks/useHotelContext";import { DateRangePicker } from "@mui/x-date-pickers-pro/DateRangePicker";
 import { Box } from "@mui/material";
 import dayjs, { Dayjs } from "dayjs";
-import { useMutation } from "react-query";
+// import { useMutation } from "react-query";
 import { useParams } from "react-router-dom";
 
 import { useUserContext } from "app/hooks/useUserContext";
@@ -66,7 +66,6 @@ const HotelReservation = () => {
 
   useEffect(() => {
     console.log("🚀 ~ HotelReservation ~ data:", data)
-    alert('Posted ', data)
   }, [data]);
   
 

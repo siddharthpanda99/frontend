@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "app/pages/Home";
 import Login from 'pages/Login';
 import PrivateRoutes from "routes/PrivateRoutes";
-import HotelReservation from 'app/components/ReservationComponent';
+import BookingsList from 'app/components/BookingsList';
 import HotelDetails from 'app/pages/HotelDetails';
 import HotelDetailsProvider from 'app/providers/HotelDetailsProvider';
 
@@ -13,7 +13,7 @@ const RouterComponent = () => {
     <Routes>
       <Route element={<PrivateRoutes />}>
         <Route element={<Home />} path="/home" />
-        <Route element={<HotelReservation />} path="/test" />
+        <Route element={<BookingsList />} path="/bookings" />
 
         <Route
           element={
