@@ -1,6 +1,7 @@
 import { Hotel } from "app/types/Hotel";
+import { FilterOptions } from "app/interfaces/SearchSortFilter.interface";
 
-export const searchHotels = (hotels, term: string): Hotel[] => {
+export const searchHotels = (hotels: Hotel[], term: string): Hotel[] => {
     const lowerCaseTerm = term.toLowerCase();
     return hotels.filter((hotel) =>
         hotel.name.toLowerCase().includes(lowerCaseTerm) ||
@@ -9,7 +10,7 @@ export const searchHotels = (hotels, term: string): Hotel[] => {
 };
 
 
-export const filterHotels = (hotels, options: FilterOptions): Hotel[] => {
+export const filterHotels = (hotels: Hotel[], options: FilterOptions): Hotel[] => {
     return hotels.filter((hotel) => {
         return (
             (!options.location ||
@@ -20,7 +21,7 @@ export const filterHotels = (hotels, options: FilterOptions): Hotel[] => {
     });
 };
 
-export const sortHotels = (hotels, sortBy: keyof Hotel, order: "asc" | "desc"): Hotel[] => {
+export const sortHotels = (hotels: Hotel[], sortBy: keyof Hotel, order: "asc" | "desc"): Hotel[] => {
     return [...hotels].sort((a, b) => {
         if (order === "asc") {
             return a[sortBy] - b[sortBy];
@@ -29,12 +30,3 @@ export const sortHotels = (hotels, sortBy: keyof Hotel, order: "asc" | "desc"): 
         }
     });
 };
-
-// export const searchHotels = (term: string, hotels: Hotel[]): Hotel[] => {
-//     const lowerCaseTerm = term.toLowerCase();
-//     return hotels.filter(
-//         (hotel) =>
-//             hotel.name.toLowerCase().includes(lowerCaseTerm) ||
-//             hotel.location.toLowerCase().includes(lowerCaseTerm)
-//     );
-// };
