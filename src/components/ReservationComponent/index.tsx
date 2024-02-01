@@ -74,13 +74,13 @@ const HotelReservation = () => {
   const { email } = user;
   const [dateRange, setDateRange] = React.useState<DateRange<Dayjs>>([
     dayjs(Date.now()),
-    dayjs(Date.now()),
+    dayjs(Date.now() + 86400000),
   ]);
 
   const [bookingInfo, setBookingInfo] = useState({
     hotel_id: id,
-    check_in_date: dateRange[0].toString(),
-    check_out_date: dateRange[1].toString(),
+    check_in_date: dateRange[0]?.toString(),
+    check_out_date: dateRange[1]?.toString(),
     room_id: selectedRoom,
     total_amount: price,
     user_email: email,
@@ -89,6 +89,16 @@ const HotelReservation = () => {
   useEffect(() => {
     console.log("🚀 ~ HotelReservation ~ bookingInfo:", bookingInfo);
   }, [bookingInfo]);
+
+  useEffect(() => {
+    console.log("🚀 ~ HotelReservation ~ dateRange changed:", dateRange);
+    setBookingInfo({
+      ...bookingInfo,
+      check_in_date: dateRange[0]?.toString(),
+      check_out_date: dateRange[1]?.toString()
+    });
+  }, [dateRange]);
+
 
   return (
     <div style={styles.container}>
