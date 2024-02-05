@@ -18,7 +18,7 @@ export default function BookingDialog({open, handleClose}) {
         onClose={handleClose}
       >
         <DialogTitle>Optional sizes</DialogTitle>
-        <DialogContent sx={{width: '1000px'}}>
+        <DialogContent sx={{ width: "1000px" }}>
           <Box
             noValidate
             component="form"
@@ -29,7 +29,7 @@ export default function BookingDialog({open, handleClose}) {
               // width: "fit-content",
             }}
           >
-            <HotelReservation />
+            <HotelReservation handleClose={handleClose} />
           </Box>
         </DialogContent>
         <DialogActions>

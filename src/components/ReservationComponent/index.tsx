@@ -45,7 +45,7 @@ const styles = {
   spacer: { marginTop: 30, marginBottom: 30 },
 };
 
-const HotelReservation = () => {
+const HotelReservation = ({handleClose}) => {
   const { hotel } = useHotelContext();
   const { user } = useUserContext();
   const param = useParams();
@@ -61,7 +61,7 @@ const HotelReservation = () => {
   const handleBooking = (e) => {
     e.preventDefault();
     postData(bookingInfo);
-           
+    handleClose()       
   }
 
   useEffect(() => {

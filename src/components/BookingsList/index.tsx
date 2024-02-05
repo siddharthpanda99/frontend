@@ -22,7 +22,7 @@ const BookingsList = () => {
   };
 
   const columns: GridColDef[] = [
-    { field: "booking_id", headerName: "ID", width: 90 },
+    { field: "booking_id", headerName: "Booking ID", width: 90 },
     {
       field: "hotel_name",
       headerName: "Hotel Name",
@@ -34,7 +34,7 @@ const BookingsList = () => {
       headerName: "Room Type",
       width: 150,
       renderCell: (params) => {
-        return <div className="rowitem">{params.row.room_details.type}</div>;
+        return <div style={{margin: 30}}>{params.row.room_details.type}</div>;
       },
       // editable: true,
     },
@@ -118,6 +118,7 @@ const BookingsList = () => {
             rows={bookingData}
             columns={columns}
             getRowId={(row: any) => row.booking_id}
+            getRowHeight={() => "auto"}
             // initialState={{
             //   pagination: {
             //     paginationModel: {
