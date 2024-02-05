@@ -18,10 +18,11 @@ const Login = () => {
   useEffect(() => {
     console.log("🚀 ~ useEffect ~ data:", data)
     if (data && data?.data?.token) {
-      console.log("🚀 ~ useEffect ~ token:", data.token)
+      console.log("🚀 ~ useEffect ~ token:", data.token, data.token);
       setUser({
         ...user, // Copy the old fields
         token: data?.data?.token, // But override this one
+        user_id: data?.data?.id,
         loggedIn: true,
         acceptedPolicy: true,
       });
@@ -30,6 +31,7 @@ const Login = () => {
         JSON.stringify({
           ...user, // Copy the old fields
           token: data?.data?.token, // But override this one
+          user_id: data?.data?.id,
           loggedIn: true,
           acceptedPolicy: true,
         })

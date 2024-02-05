@@ -11,11 +11,12 @@ const localUser = JSON.parse(localStorage.getItem("user"));
 const UserProvider = ({ children }: UserProviderProps) => {
   const [user, setUser] = useState<User>(
     localUser || {
-      username: "eve.holt@reqres.in",
-      password: "cityslicka",
+      username: "john@example.com",
+      password: "password123",
       loggedIn: false,
       acceptedPolicy: false,
       userData: [],
+      id: 0,
       token: "",
     }
   );
