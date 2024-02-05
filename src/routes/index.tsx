@@ -8,6 +8,7 @@ import BookingsList from 'app/components/BookingsList';
 import NotFound from 'app/pages/NotFound';
 import HotelDetails from 'app/pages/HotelDetails';
 import HotelDetailsProvider from 'app/providers/HotelDetailsProvider';
+import LoanInitiation from 'app/pages/LoanInitiation';
 
 const RouterComponent = () => {
   return (
@@ -15,6 +16,7 @@ const RouterComponent = () => {
       <Route element={<PrivateRoutes />}>
         <Route element={<Home />} path="/home" />
         <Route element={<BookingsList />} path="/bookings" />
+        <Route element={<LoanInitiation />} path="/loan-apply" />
 
         <Route
           element={

@@ -53,6 +53,7 @@ const TopBar = forwardRef((props, ref) => {
     <NavbarContainer ref={ref}>
       <NavbarLink to="/home">Home</NavbarLink>
       <NavbarLink to="/bookings">Bookings</NavbarLink>
+      <NavbarLink to="/loan-apply">Apply For Loan</NavbarLink>
       {user?.loggedIn && (
         <Button variant="outlined" onClick={handleLogout}>
           Logout
